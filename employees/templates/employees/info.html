@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% extends "employees/main.html" %}
+
+    {% block body %}
+
+    <hr>
+    <br><br><br>
+    <div style="text-align: center;">
+        <h1><u>ADMIN PANNEL</u></h1>
+        <p>The system contains an option for a superUser/Admin that can be accessed " <a
+                href="ehs.herokuapp.com/admin">ehs.herokuapp.com/admin </a>".
+            A Super User/Admin can enter to Admin Panel py providing credentials and can overview/edit and perform CRUD and all
+            functionalities that the admin who handles the site can.
+        </p>
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

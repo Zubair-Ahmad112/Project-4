@@ -16,7 +16,128 @@
 
 
 
-  
+  <h3 class="m-4 text-center mt-5"><u>Employees List</u></h3>
+  <div class="row">
+    <div class="col-12">
+      {% if employees %}
+      <div class="card bg-light ms-4 me-4 mb-4">
+        <div class="card-header">
+          <i class="fa-solid fa-list-1-2 fa-lg"></i>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+
+                  <th scope="col">Department</th>
+
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for employee in employees %}
+                <tr>
+
+                  <td>{{ employee.first_name }}</td>
+                  <td>{{ employee.last_name }}</td>
+
+                  <td>{{ employee.department }}</td>
+
+                  <td style="text-align: end;">
+                    <button type="button" class="btn me-1" style="background-color: green; color: white;"
+                      href="{% url 'view_employee' employee.id %}" data-bs-toggle="modal"
+                      data-bs-target="#myModal{{employee.id}}">
+                      <i class="fa-solid fa-circle-info fa-lg"></i>
+                    </button>
+
+
+                    <!-- To view Employee -->
+                    <div class="modal" id="myModal{{employee.id}}" tabindex="-1" aria-labelledby="myModalLabel1"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">
+                              Employee: {{ employee.first_name }} {{ employee.last_name }}
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true"></span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <ul class="list-unstyled">
+
+                              <li>First Name: <strong>{{ employee.first_name }}</strong></li>
+                              <li>Last Name: <strong>{{ employee.last_name }}</strong></li>
+                              <li>Employee Number: <strong>{{ employee.employee_number }}</strong></li>
+                              <li>Email: <strong>{{ employee.email }}</strong></li>
+                              <li>Department: <strong>{{ employee.department }}</strong></li>
+                              <li>Professional Experience(Yrs): <strong>{{ employee.professional_exp }}</strong></li>
+                              <li>Gender: <strong>{{ employee.gender }}</strong></li>
+                            </ul>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn " style="background-color:yellow"
+                              data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a class="btn btn-secondary me-1" href="{% url 'edit' employee.id %}">
+                      Edit
+                    </a>
+
+                    <button type="button" class="btn btn-danger" style="background-color: red; color: white;"
+                      data-bs-toggle="modal" data-bs-target="#delete{{employee.id}}">
+                      <i class="fa-solid fa-trash-can fa-lg"></i>
+                    </button>
+
+                    <!-- To delete Employee -->
+                    <div class="modal" id="delete{{employee.id}}" tabindex="-1" aria-labelledby="myModalLabel2"
+                      aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">
+                              Employee: {{ employee.first_name }} {{ employee.last_name }}
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true"></span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure you want to delete {{ employee.first_name }} {{ employee.last_name }}??</p>
+                          </div>
+                          <div class="modal-footer">
+                            <form action="{% url 'delete' employee.id %}" method="POST">
+                              {% csrf_token %}
+                              <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          </p>
+        </div>
+      </div>
+      {% else %}
+      <h5 class="alert  ms-4 me-4" style="background-color:dimgrey;">No Employee Registered.</h5>
+      {% endif %}
+    </div>
+  </div>
   {% endblock %}
 </body>
 
