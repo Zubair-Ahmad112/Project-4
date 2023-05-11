@@ -16,7 +16,7 @@ DEBUG = False
 
 
 # Setting deployed heroku app url in allowed hosts.
-ALLOWED_HOSTS = ['ehs.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','ehs.herokuapp.com']
 
 
 # Application  
