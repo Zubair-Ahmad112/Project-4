@@ -5,15 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>EHS</title>
 </head>
 
 <body>
   {% extends "employees/main.html" %}
 
   {% block body %}
-  <hr>
-
 
 
   <h3 class="m-4 text-center mt-5"><u>Employees List</u></h3>
@@ -35,6 +33,7 @@
                   <th scope="col">Last Name</th>
 
                   <th scope="col">Department</th>
+                  <th scope="col">Professional Experience (Years)</th>
 
                   <th scope="col"></th>
                 </tr>
@@ -47,6 +46,7 @@
                   <td>{{ employee.last_name }}</td>
 
                   <td>{{ employee.department }}</td>
+                  <td>{{ employee.professional_exp }}</td>
 
                   <td style="text-align: end;">
                     <button type="button" class="btn me-1" style="background-color: green; color: white;"
@@ -88,7 +88,7 @@
                         </div>
                       </div>
                     </div>
-
+                    <!-- To edit Employee -->
                     <a class="btn btn-secondary me-1" href="{% url 'edit' employee.id %}">
                       Edit
                     </a>
@@ -134,7 +134,7 @@
         </div>
       </div>
       {% else %}
-      <h5 class="alert  ms-4 me-4" style="background-color:dimgrey;">No Employee Registered.</h5>
+      <h5 class="alert  ms-4 me-4" style="background-color:lightgray;">No Employee Registered.</h5>
       {% endif %}
     </div>
   </div>

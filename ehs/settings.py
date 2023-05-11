@@ -1,33 +1,25 @@
 from pathlib import Path
-
+import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&@-o*pb+_$x+gclovr4v98-(+-*@ey0yi+7qm(2g8i5#p6zt@8'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# EMAIL_HOST = ''
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-# EMAIL_PORT = 
-# EMAIL_USE_TLS = 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# Debug set to false
+DEBUG = False
 
 
-# # Default sender email
-# DEFAULT_FROM_EMAIL = ''
-ALLOWED_HOSTS = ['127.0.0.1','ehs.herokuapp.com']
+
+# Setting deployed heroku app url in allowed hosts.
+ALLOWED_HOSTS = ['ehs.herokuapp.com']
 
 
-# Application definition 
-
+# Application  
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,8 +30,10 @@ INSTALLED_APPS = [
     'employees',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,29 +64,20 @@ WSGI_APPLICATION = 'ehs.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd8g6nj09enb2u1',
-#         'USER': 'ohysduzlpxwfkn',
-#         'PASSWORD': '56799f178fe3de379542ca80908f4885fc483acf729de82da86613662d391f3c',
-#         'HOST': 'ec2-34-202-127-5.compute-1.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd8g6nj09enb2u1',
+        'USER': 'ohysduzlpxwfkn',
+        'PASSWORD': '56799f178fe3de379542ca80908f4885fc483acf729de82da86613662d391f3c',
+        'HOST': 'ec2-34-202-127-5.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -114,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -125,13 +110,18 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+# For static files deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+django_heroku.settings(locals())
 
