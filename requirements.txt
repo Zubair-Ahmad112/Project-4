@@ -4,6 +4,7 @@ django_heroku==0.3.1
 gunicorn
 whitenoise
 asgiref==3.5.2
+Django==4.0.4
 flake8==6.0.0
 mccabe==0.7.0
 pycodestyle==2.10.0
