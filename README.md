@@ -32,7 +32,7 @@ An Employee Handling System(EHS), that lets you manage your organization/company
 -> Admin can act as a superuser/superadmin and can also edit/delete add and view the employees. Admin can re-overview any of the acts performed by the one who is using/handing the site(employees handling system).
 
 ->Login credentials for accessing admin are: 
-                                              username: administrator
+                                              username: admin
                                               password: project-4
 
 
