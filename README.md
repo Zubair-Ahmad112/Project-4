@@ -32,9 +32,36 @@ An Employee Handling System(EHS), that lets you manage your organization/company
 -> Admin can act as a superuser/superadmin and can also edit/delete add and view the employees. Admin can re-overview any of the acts performed by the one who is using/handing the site(employees handling system).
 
 ->Login credentials for accessing admin are: 
-                                              username: administrator
+                                              username: admin
                                               password: project-4
 
+
+
+                 ###########################################################
+
+
+                               APP LOGIN SYSTEM
+
+ The app contains a login module. By default there are 2 users in the app. For user creation, there are 2 categories either user as a manager role or a user as a simple user.
+
+ -> The user with manager role can perofrom all CRUD, for the employees.
+ -> Whereas, the user with simple_user role can only add and view the employee.
+ -> Authentication applied so that no one can access app other pages without logging in through any way.
+ -> User with simple_user role can not access edit or delete functionality even by writing url for that in browser. He will be redirected to login page.
+
+ Depending on the user role after logging in , he will be able to perform operations as per his role.
+
+
+         ------ Following are the 2 default users in the app depending upon their role :
+
+         1 ) USER WITH " MANAGER " ROLE (LOGIN CREDENTIALS BELOW):
+               username: zubair-ahmed
+               password: 1234567.
+
+
+         2 ) USER WITH " SIMPLE_USER " ROLE (LOGIN CREDENTIALS BELOW):
+               username: user
+               password: 12345678.
 
 
 

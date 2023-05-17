@@ -3,23 +3,58 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Employee
 from .forms import EmployeeForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import Group
+
+
+def is_manager(user):
+    return user.groups.filter(name='manager').exists()
+
+
+manager_required = user_passes_test(is_manager, login_url='login')
 
 
 # Creating views below
 
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Check if the email and password belong to one of the users in the database
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            # Invalid credentials, show an error message
+            messages.error(request, 'Invalid email or password')
+            return render(request, 'employees/login.html',)
+
+    return render(request, 'employees/login.html')
+
+
+@login_required
 def main(request):
     return render(request, 'employees/index.html', {
         'employees': Employee.objects.all()})
 
 
+@login_required
 def view(request, id):
     return HttpResponseRedirect(reverse('index'))
 
 
+@login_required
 def info(request):
     return render(request, 'employees/info.html')
 
 
+@login_required
 def adding(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
@@ -55,6 +90,8 @@ def adding(request):
     })
 
 
+@login_required
+@manager_required
 def update(request, id):
     if request.method == 'POST':
         employee = Employee.objects.get(pk=id)
@@ -73,8 +110,16 @@ def update(request, id):
     })
 
 
+@login_required
+@manager_required
 def destroy(request, id):
     if request.method == 'POST':
         employee = Employee.objects.get(pk=id)
         employee.delete()
     return HttpResponseRedirect(reverse('index'))
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login')

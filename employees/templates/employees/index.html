@@ -88,6 +88,9 @@
                         </div>
                       </div>
                     </div>
+
+                    {% for group in request.user.groups.all %}
+                    {% if group.name == 'manager' %}
                     <!-- To edit Employee -->
                     <a class="btn btn-secondary me-1" href="{% url 'edit' employee.id %}">
                       Edit
@@ -124,6 +127,8 @@
                         </div>
                       </div>
                     </div>
+                    {%endif%}
+                    {%endfor%}
                   </td>
                 </tr>
                 {% endfor %}

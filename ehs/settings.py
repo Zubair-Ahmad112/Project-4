@@ -20,7 +20,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['ehs.herokuapp.com']
 
 
-# Application definition 
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,7 +78,7 @@ DATABASES = {
     }
 }
 
-
+LOGIN_URL = 'login'
 
 
 # Password validation
@@ -98,9 +98,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-
 
 
 # Internationalization
@@ -130,4 +127,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
-
