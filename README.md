@@ -21,16 +21,28 @@ An Employee Handling System (EHS) that allows you to manage employees in your or
 2. Index (main page) displays the complete list of employees if any employees are registered.
 - User with manager role:
 
-
+![ManagerDashboard](/media/manager_dashboard.PNG)
 
 - User with simple_user role:
 
-
+![SimpleUserDashboard](/media/simpleUser_dashboard.PNG)
 
 3. Edit Employee page allows changing the record of an existing employee.
+
+![EditEmployee](/media/edit_employee.PNG)
+
 4. Add Employee Page allows registering a new employee.
+
+![Add Employee](/media/add_employee.PNG)
+
 5. Info Page displays basic information related to the admin panel and its access method.
+
+![Info](/media/info.PNG)
+
 6. Login to the admin panel by entering credentials through this page.
+
+![Admin](/media/django_admin.PNG)
+
 7. Admin Home Page serves as a dashboard for all app-related information and provides access to sub-pages in the admin panel for CRUD operations on employees.
 
 
