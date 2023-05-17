@@ -2,23 +2,38 @@
 
 An Employee Handling System (EHS) that allows you to manage employees in your organization or business.
 
-## Details
+## FEATURES
 
+- Login/Logout.
 - Complete CRUD App.
 - Easily add as many employees as needed.
 - Edit and delete existing employees.
 - View detailed information about specific employees.
 - Home page lists all added employees and indicates if none have been added.
-- Perform actions (edit, view, delete) on each employee in the list.
-- The app consists of three pages: edit employee, add employee, and the homepage.
 
-## Admin Panel
+## Total Web Pages
 
-The app includes an admin panel that can be accessed at [https://ehs.herokuapp.com/admin](https://ehs.herokuapp.com/admin). The admin can act as a superuser/superadmin and has the ability to edit, delete, add, and view employees. The admin can review all actions performed by other users of the employee handling system.
+1. Login Page (can login either as a manager or as a simple user).
 
-Login credentials for accessing the admin panel:
-- Username: admin
-- Password: project-4
+![Login](/media/login.PNG)
+
+
+2. Index (main page) displays the complete list of employees if any employees are registered.
+- User with manager role:
+
+
+
+- User with simple_user role:
+
+
+
+3. Edit Employee page allows changing the record of an existing employee.
+4. Add Employee Page allows registering a new employee.
+5. Info Page displays basic information related to the admin panel and its access method.
+6. Login to the admin panel by entering credentials through this page.
+7. Admin Home Page serves as a dashboard for all app-related information and provides access to sub-pages in the admin panel for CRUD operations on employees.
+
+
 
 ## App Login System
 
@@ -31,11 +46,21 @@ The app contains a login module with two user roles: manager and simple user.
 Default users in the app based on their roles:
 1. User with "Manager" role:
    - Username: zubair-ahmed
-   - Password: 1234567
+   - Password: 1234567.
 
 2. User with "Simple User" role:
    - Username: user
-   - Password: 12345678
+   - Password: 12345678.
+
+
+## Admin Panel
+
+The app includes an admin panel that can be accessed at [https://ehs.herokuapp.com/admin](https://ehs.herokuapp.com/admin). The admin can act as a superuser/superadmin and has the ability to edit, delete, add, and view employees. The admin can review all actions performed by other users of the employee handling system.
+
+Login credentials for accessing the admin panel:
+- Username: admin
+- Password: project-4
+
 
 ## Deployment Process Details
 
@@ -55,20 +80,20 @@ Default users in the app based on their roles:
 - Selected the main branch for deployment.
 - Successfully deployed the app.
 
-## Total Web Pages
 
-1. Login Page (can login either as a manager or as a simple user).
-2. Index (main page) displays the complete list of employees if any employees are registered.
-3. Edit Employee page allows changing the record of an existing employee.
-4. Add Employee Page allows registering a new employee.
-5. Info Page displays basic information related to the admin panel and its access method.
-6. Login to the admin panel by entering credentials through this page.
-7. Admin Home Page serves as a dashboard for all app-related information and provides access to sub-pages in the admin panel for CRUD operations on employees.
 
 ## Technologies
 
 HTML, CSS, Django, PostgreSQL, Bootstrap
 
+
 ## Note
 
-Completing this project involved overcoming various challenges and learning from errors. There were several unsuccessful deployment attempts, but eventually, the correct method was
+To the successful completion of this project, learnt alot through erorors that took time and focus to get resolved. Several time un-successful deployment occured but at last learnt the right way. After that deployed app several times successfully. In all ups and downs, obviously got help from blogs or any other helping material , like for deployment, etc, and learnt from themand did by own them. Overall, with several failiures and bugs that occured time to time helped me to learn a lot and creaed good understandingip of the used tools/languages/processes.
+
+
+
+
+
+
+
